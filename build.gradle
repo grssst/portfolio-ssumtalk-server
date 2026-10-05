@@ -1,0 +1,79 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.hottalk'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	implementation 'com.warrenstrange:googleauth:1.5.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1' // JWT 라이브러리
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+	implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+
+	// MySQL Connector
+	implementation 'mysql:mysql-connector-java:8.0.28'
+	implementation 'com.auth0:java-jwt:3.18.2'
+	implementation 'com.amazonaws:aws-java-sdk-s3:1.12.391'
+
+	// Optional: Spring Security Test for testing security configurations
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	implementation 'software.amazon.awssdk:dynamodb:2.20.46' // 최신 버전 사용
+
+	// Spring WebSocket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+
+	implementation 'org.hibernate:hibernate-spatial:6.6.3.Final'
+	implementation 'org.hibernate:hibernate-core:6.6.3.Final'
+	implementation 'org.locationtech.jts:jts-core:1.18.2'
+
+	// 구글 Auth 라이브러리
+	implementation 'com.google.auth:google-auth-library-oauth2-http:1.15.0' // 최신버전 확인
+
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'com.google.firebase:firebase-admin:9.1.1'
+	implementation 'software.amazon.awssdk:sqs:2.20.4' // AWS SQS
+	implementation 'software.amazon.awssdk:lambda:2.20.4' // AWS Lambda
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
